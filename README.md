@@ -10,7 +10,7 @@ A local-first creative-AI app: a Next.js front end over a local **ComfyUI** imag
   <img src="docs/media/hero.gif" width="480" alt="A generated outlaw portrait animated into a 5-second clip">
 </p>
 
-### ▶ [Watch the full walkthrough](demo/outlaw-walkthrough.mp4) — 1:45, upload to finished clip
+### ▶ [Watch the full walkthrough](demo/outlaw-walkthrough.mp4) — 1:46, upload to finished clip
 
 <p align="center">
   <img src="docs/media/results-strip.jpg" width="720" alt="Three generated outlaw portraits">
@@ -22,9 +22,11 @@ A local-first creative-AI app: a Next.js front end over a local **ComfyUI** imag
 ## The flow
 
 ```
- selfie  ──▶  ComfyUI (SDXL + FaceID)  ──▶  3 wanted posters  ──▶  LTX-2 image-to-video  ──▶  5s clip
-                     ~90s each,                streamed in                  prompt written by
-                     run sequentially          over SSE                     Claude Haiku
+ photo ──▶  ComfyUI (SDXL + IPAdapter FaceID)  ──▶  3 wanted posters
+              ~90s each, run sequentially           streamed in over SSE
+                                                            │
+                      5s clip  ◀──  LTX-2 image-to-video  ◀──┘
+                                    prompt written by Claude Haiku
 ```
 
 1. **Identify the outlaw** — drop a photo on the deputy's desk and pick an aspect ratio.
